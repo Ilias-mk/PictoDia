@@ -14,6 +14,8 @@
 		F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE930487FB100716662 /* APIConfig.swift */; };
 		F280AC0030495AFA00716662 /* Evento.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE530487DEF00716662 /* Evento.swift */; };
 		F280AC0130495B0100716662 /* Pictograma.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE630487E1D00716662 /* Pictograma.swift */; };
+		F280AC043049687E00716662 /* EventoInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC03304967A900716662 /* EventoInputView.swift */; };
+		F280AC053049688B00716662 /* EventExtractionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC023049677500716662 /* EventExtractionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		F280ABEA30487FB800716662 /* EventExtractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionService.swift; sourceTree = "<group>"; };
 		F280ABF1304957CD00716662 /* PictoDiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictoDiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F280ABFA3049585F00716662 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		F280AC023049677500716662 /* EventExtractionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionViewModel.swift; sourceTree = "<group>"; };
+		F280AC03304967A900716662 /* EventoInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventoInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -115,6 +119,7 @@
 		F280ABE330487D8700716662 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F280AC023049677500716662 /* EventExtractionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		F280ABE430487DC800716662 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F280AC03304967A900716662 /* EventoInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,10 +243,12 @@
 			files = (
 				F280AC0130495B0100716662 /* Pictograma.swift in Sources */,
 				F280AC0030495AFA00716662 /* Evento.swift in Sources */,
+				F280AC053049688B00716662 /* EventExtractionViewModel.swift in Sources */,
 				F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */,
 				F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */,
 				F280ABFB30495A8000716662 /* NetworkClient.swift in Sources */,
 				F280ABFC30495AA300716662 /* EventExtractionService.swift in Sources */,
+				F280AC043049687E00716662 /* EventoInputView.swift in Sources */,
 				F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
