@@ -6,14 +6,47 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F280ABFB30495A8000716662 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABFA3049585F00716662 /* NetworkClient.swift */; };
+		F280ABFC30495AA300716662 /* EventExtractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABEA30487FB800716662 /* EventExtractionService.swift */; };
+		F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE730487E7A00716662 /* EventExtractionError.swift */; };
+		F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE830487F0E00716662 /* AnthropicModels.swift */; };
+		F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE930487FB100716662 /* APIConfig.swift */; };
+		F280AC0030495AFA00716662 /* Evento.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE530487DEF00716662 /* Evento.swift */; };
+		F280AC0130495B0100716662 /* Pictograma.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE630487E1D00716662 /* Pictograma.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F280ABF5304957CD00716662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2201683304727BF007F95B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F220168A304727BF007F95B7;
+			remoteInfo = PictoDia;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		F220168B304727BF007F95B7 /* PictoDia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictoDia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F280ABE530487DEF00716662 /* Evento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evento.swift; sourceTree = "<group>"; };
+		F280ABE630487E1D00716662 /* Pictograma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictograma.swift; sourceTree = "<group>"; };
+		F280ABE730487E7A00716662 /* EventExtractionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionError.swift; sourceTree = "<group>"; };
+		F280ABE830487F0E00716662 /* AnthropicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicModels.swift; sourceTree = "<group>"; };
+		F280ABE930487FB100716662 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		F280ABEA30487FB800716662 /* EventExtractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionService.swift; sourceTree = "<group>"; };
+		F280ABF1304957CD00716662 /* PictoDiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictoDiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F280ABFA3049585F00716662 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F220168D304727BF007F95B7 /* PictoDia */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PictoDia;
+			sourceTree = "<group>";
+		};
+		F280ABF2304957CD00716662 /* PictoDiaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PictoDiaTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +59,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F280ABEE304957CD00716662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		F2201682304727BF007F95B7 = {
 			isa = PBXGroup;
 			children = (
+				F280ABE430487DC800716662 /* Views */,
+				F280ABE330487D8700716662 /* ViewModels */,
+				F280ABE230487D7800716662 /* Services */,
+				F280ABE130487D6900716662 /* Models */,
 				F220168D304727BF007F95B7 /* PictoDia */,
+				F280ABF2304957CD00716662 /* PictoDiaTests */,
 				F220168C304727BF007F95B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +86,44 @@
 			isa = PBXGroup;
 			children = (
 				F220168B304727BF007F95B7 /* PictoDia.app */,
+				F280ABF1304957CD00716662 /* PictoDiaTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F280ABE130487D6900716662 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F280ABE630487E1D00716662 /* Pictograma.swift */,
+				F280ABE530487DEF00716662 /* Evento.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F280ABE230487D7800716662 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F280ABFA3049585F00716662 /* NetworkClient.swift */,
+				F280ABEA30487FB800716662 /* EventExtractionService.swift */,
+				F280ABE930487FB100716662 /* APIConfig.swift */,
+				F280ABE830487F0E00716662 /* AnthropicModels.swift */,
+				F280ABE730487E7A00716662 /* EventExtractionError.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F280ABE330487D8700716662 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F280ABE430487DC800716662 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +151,29 @@
 			productReference = F220168B304727BF007F95B7 /* PictoDia.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F280ABF0304957CD00716662 /* PictoDiaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F280ABF7304957CD00716662 /* Build configuration list for PBXNativeTarget "PictoDiaTests" */;
+			buildPhases = (
+				F280ABED304957CD00716662 /* Sources */,
+				F280ABEE304957CD00716662 /* Frameworks */,
+				F280ABEF304957CD00716662 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F280ABF6304957CD00716662 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F280ABF2304957CD00716662 /* PictoDiaTests */,
+			);
+			name = PictoDiaTests;
+			packageProductDependencies = (
+			);
+			productName = PictoDiaTests;
+			productReference = F280ABF1304957CD00716662 /* PictoDiaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +186,10 @@
 				TargetAttributes = {
 					F220168A304727BF007F95B7 = {
 						CreatedOnToolsVersion = 26.6;
+					};
+					F280ABF0304957CD00716662 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = F220168A304727BF007F95B7;
 					};
 				};
 			};
@@ -100,12 +208,20 @@
 			projectRoot = "";
 			targets = (
 				F220168A304727BF007F95B7 /* PictoDia */,
+				F280ABF0304957CD00716662 /* PictoDiaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F2201689304727BF007F95B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F280ABEF304957CD00716662 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,10 +235,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F280AC0130495B0100716662 /* Pictograma.swift in Sources */,
+				F280AC0030495AFA00716662 /* Evento.swift in Sources */,
+				F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */,
+				F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */,
+				F280ABFB30495A8000716662 /* NetworkClient.swift in Sources */,
+				F280ABFC30495AA300716662 /* EventExtractionService.swift in Sources */,
+				F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F280ABED304957CD00716662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F280ABF6304957CD00716662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F220168A304727BF007F95B7 /* PictoDia */;
+			targetProxy = F280ABF5304957CD00716662 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F2201694304727C0007F95B7 /* Debug */ = {
@@ -306,6 +444,46 @@
 			};
 			name = Release;
 		};
+		F280ABF8304957CD00716662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilias.PictoDiaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PictoDia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PictoDia";
+			};
+			name = Debug;
+		};
+		F280ABF9304957CD00716662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilias.PictoDiaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PictoDia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PictoDia";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +501,15 @@
 			buildConfigurations = (
 				F2201697304727C0007F95B7 /* Debug */,
 				F2201698304727C0007F95B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F280ABF7304957CD00716662 /* Build configuration list for PBXNativeTarget "PictoDiaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F280ABF8304957CD00716662 /* Debug */,
+				F280ABF9304957CD00716662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
