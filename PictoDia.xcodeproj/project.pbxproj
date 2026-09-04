@@ -19,6 +19,11 @@
 		F280AC0730496BEF00716662 /* PictogramaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0630496BEC00716662 /* PictogramaError.swift */; };
 		F280AC0930496CA700716662 /* ArasaacModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0830496CA200716662 /* ArasaacModels.swift */; };
 		F280AC0B30496CFD00716662 /* ArasaacService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0A30496CFA00716662 /* ArasaacService.swift */; };
+		F280AC1030496E2900716662 /* PictogramaSelectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */; };
+		F280AC1230496E9200716662 /* AgendaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1130496E9000716662 /* AgendaBuilder.swift */; };
+		F280AC193049703400716662 /* PictogramaFilaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC183049703100716662 /* PictogramaFilaView.swift */; };
+		F280AC1B3049704F00716662 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1A3049704C00716662 /* AgendaView.swift */; };
+		F280AC1D304B52C700716662 /* PictogramaCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1C304B52C300716662 /* PictogramaCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,11 @@
 		F280AC0630496BEC00716662 /* PictogramaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaError.swift; sourceTree = "<group>"; };
 		F280AC0830496CA200716662 /* ArasaacModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArasaacModels.swift; sourceTree = "<group>"; };
 		F280AC0A30496CFA00716662 /* ArasaacService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArasaacService.swift; sourceTree = "<group>"; };
+		F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaSelectionService.swift; sourceTree = "<group>"; };
+		F280AC1130496E9000716662 /* AgendaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaBuilder.swift; sourceTree = "<group>"; };
+		F280AC183049703100716662 /* PictogramaFilaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaFilaView.swift; sourceTree = "<group>"; };
+		F280AC1A3049704C00716662 /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
+		F280AC1C304B52C300716662 /* PictogramaCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -113,6 +123,9 @@
 		F280ABE230487D7800716662 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F280AC1C304B52C300716662 /* PictogramaCache.swift */,
+				F280AC1130496E9000716662 /* AgendaBuilder.swift */,
+				F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */,
 				F280AC0A30496CFA00716662 /* ArasaacService.swift */,
 				F280AC0830496CA200716662 /* ArasaacModels.swift */,
 				F280AC0630496BEC00716662 /* PictogramaError.swift */,
@@ -136,6 +149,8 @@
 		F280ABE430487DC800716662 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F280AC1A3049704C00716662 /* AgendaView.swift */,
+				F280AC183049703100716662 /* PictogramaFilaView.swift */,
 				F280AC03304967A900716662 /* EventoInputView.swift */,
 			);
 			path = Views;
@@ -252,13 +267,18 @@
 			files = (
 				F280AC0130495B0100716662 /* Pictograma.swift in Sources */,
 				F280AC0730496BEF00716662 /* PictogramaError.swift in Sources */,
+				F280AC1B3049704F00716662 /* AgendaView.swift in Sources */,
 				F280AC0030495AFA00716662 /* Evento.swift in Sources */,
+				F280AC193049703400716662 /* PictogramaFilaView.swift in Sources */,
 				F280AC053049688B00716662 /* EventExtractionViewModel.swift in Sources */,
 				F280AC0B30496CFD00716662 /* ArasaacService.swift in Sources */,
+				F280AC1230496E9200716662 /* AgendaBuilder.swift in Sources */,
 				F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */,
 				F280AC0930496CA700716662 /* ArasaacModels.swift in Sources */,
+				F280AC1D304B52C700716662 /* PictogramaCache.swift in Sources */,
 				F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */,
 				F280ABFB30495A8000716662 /* NetworkClient.swift in Sources */,
+				F280AC1030496E2900716662 /* PictogramaSelectionService.swift in Sources */,
 				F280ABFC30495AA300716662 /* EventExtractionService.swift in Sources */,
 				F280AC043049687E00716662 /* EventoInputView.swift in Sources */,
 				F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */,
