@@ -16,7 +16,7 @@ nonisolated struct EventExtractionService {
     
     func extraerEventos(desde frase: String) async throws -> [Evento] {
         let requestBody = AnthropicRequest(
-            model: "claude-sonnet-4-6",
+            model: "claude-sonnet-5",
             maxTokens: 1024,
             messages: [AnthropicMessage(role: "user", content: construirPrompt(frase: frase))]
         )
