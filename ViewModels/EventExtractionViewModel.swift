@@ -74,13 +74,21 @@ final class EventExtractionViewModel {
     }
 
     /// Vuelca la transcripción en el campo de texto mientras se dicta (RF-26, RF-27).
+    /// Vuelca la transcripción en el campo de texto mientras se dicta (RF-26, RF-27).
     private func observarTranscripcion() {
         Task { @MainActor in
+            var ultimoTexto = ""
             while speech.estaGrabando {
-                textoEntrada = speech.transcripcion   // RF-27: sustituye lo que hubiera
+                if !speech.transcripcion.isEmpty {
+                    ultimoTexto = speech.transcripcion
+                    textoEntrada = ultimoTexto   // RF-27
+                }
                 try? await Task.sleep(for: .milliseconds(150))
             }
-            textoEntrada = speech.transcripcion
+            if !speech.transcripcion.isEmpty {
+                ultimoTexto = speech.transcripcion
+            }
+            textoEntrada = ultimoTexto
         }
     }
     /// TEMPORAL: prueba la agenda con eventos fijos, sin llamar al LLM de extracción.

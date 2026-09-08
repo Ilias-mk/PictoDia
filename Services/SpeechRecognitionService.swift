@@ -11,7 +11,7 @@ final class SpeechRecognitionService {
     private(set) var transcripcion: String = ""
     private(set) var estaGrabando: Bool = false
     
-    private let reconocedor = SFSpeechRecognizer(locale: Locale(identifier: "es-ES"))
+    private let reconocedor = SFSpeechRecognizer(locale: Locale(identifier: "se-SV"))
     private let motorAudio = AVAudioEngine()
     private var peticion: SFSpeechAudioBufferRecognitionRequest?
     private var tarea: SFSpeechRecognitionTask?
