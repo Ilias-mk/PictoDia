@@ -54,14 +54,19 @@ nonisolated struct EventExtractionService {
     }
 
     private func construirPrompt(frase: String) -> String {
-        """
-        Analiza la siguiente frase en sueco de un cuidador describiendo el plan del \
-        día de una persona con autismo. Extrae los eventos discretos y ordénalos de \
-        forma lógica/cronológica aunque no se mencionen en ese orden. Responde SOLO \
-        con JSON válido en este formato exacto, sin texto adicional:
-        {"eventos": [{"descripcion": "...", "ordenSugerido": 0}]}
+                """
+                Analiza la siguiente frase en sueco de un cuidador describiendo el plan del \
+                día de una persona con autismo. Extrae los eventos discretos y ordénalos de \
+                forma lógica/cronológica aunque no se mencionen en ese orden.
 
-        Frase: "\(frase)"
-        """
-    }
+                Cada descripción debe ser una o dos palabras como máximo: el término más \
+                simple posible, sin complementos de tiempo ni de lugar. Por ejemplo, de \
+                "gå till läkaren på eftermiddagen" la descripción correcta es "läkare", \
+                no la frase completa.
+
+                Responde SOLO con JSON válido en este formato exacto, sin texto adicional:
+                {"eventos": [{"descripcion": "...", "ordenSugerido": 0}]}
+
+                Frase: "\(frase)"
+                """    }
 }

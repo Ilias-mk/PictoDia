@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Agenda visual: secuencia vertical de pictogramas en orden cronológico (RF-15, RF-17).
 struct AgendaView: View {

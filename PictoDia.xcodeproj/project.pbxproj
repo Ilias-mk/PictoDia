@@ -25,6 +25,9 @@
 		F280AC1B3049704F00716662 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1A3049704C00716662 /* AgendaView.swift */; };
 		F280AC1D304B52C700716662 /* PictogramaCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1C304B52C300716662 /* PictogramaCache.swift */; };
 		F280AC26304CA9BE00716662 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F280AC25304CA9BE00716662 /* Secrets.xcconfig */; };
+		F280AC2A304D802D00716662 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC29304D802B00716662 /* WelcomeView.swift */; };
+		F280AC2C304EF2C000716662 /* SpeechRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC2B304EF2BE00716662 /* SpeechRecognitionError.swift */; };
+		F280AC2E304EF30A00716662 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC2D304EF30600716662 /* SpeechRecognitionService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		F280AC1A3049704C00716662 /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		F280AC1C304B52C300716662 /* PictogramaCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaCache.swift; sourceTree = "<group>"; };
 		F280AC25304CA9BE00716662 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		F280AC29304D802B00716662 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		F280AC2B304EF2BE00716662 /* SpeechRecognitionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionError.swift; sourceTree = "<group>"; };
+		F280AC2D304EF30600716662 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -139,6 +145,8 @@
 		F280ABE230487D7800716662 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F280AC2D304EF30600716662 /* SpeechRecognitionService.swift */,
+				F280AC2B304EF2BE00716662 /* SpeechRecognitionError.swift */,
 				F280AC1C304B52C300716662 /* PictogramaCache.swift */,
 				F280AC1130496E9000716662 /* AgendaBuilder.swift */,
 				F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */,
@@ -165,6 +173,7 @@
 		F280ABE430487DC800716662 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F280AC29304D802B00716662 /* WelcomeView.swift */,
 				F280AC1A3049704C00716662 /* AgendaView.swift */,
 				F280AC183049703100716662 /* PictogramaFilaView.swift */,
 				F280AC03304967A900716662 /* EventoInputView.swift */,
@@ -288,6 +297,7 @@
 				F280AC0030495AFA00716662 /* Evento.swift in Sources */,
 				F280AC193049703400716662 /* PictogramaFilaView.swift in Sources */,
 				F280AC053049688B00716662 /* EventExtractionViewModel.swift in Sources */,
+				F280AC2C304EF2C000716662 /* SpeechRecognitionError.swift in Sources */,
 				F280AC0B30496CFD00716662 /* ArasaacService.swift in Sources */,
 				F280AC1230496E9200716662 /* AgendaBuilder.swift in Sources */,
 				F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */,
@@ -295,10 +305,12 @@
 				F280AC1D304B52C700716662 /* PictogramaCache.swift in Sources */,
 				F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */,
 				F280ABFB30495A8000716662 /* NetworkClient.swift in Sources */,
+				F280AC2A304D802D00716662 /* WelcomeView.swift in Sources */,
 				F280AC1030496E2900716662 /* PictogramaSelectionService.swift in Sources */,
 				F280ABFC30495AA300716662 /* EventExtractionService.swift in Sources */,
 				F280AC043049687E00716662 /* EventoInputView.swift in Sources */,
 				F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */,
+				F280AC2E304EF30A00716662 /* SpeechRecognitionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +464,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PictoDia/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Mikrofonen används för att diktera dagens plan.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Taligenkänning används för att omvandla din röst till text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -485,6 +499,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PictoDia/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Mikrofonen används för att diktera dagens plan.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Taligenkänning används för att omvandla din röst till text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

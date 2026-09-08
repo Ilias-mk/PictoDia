@@ -11,6 +11,10 @@ final class EventExtractionViewModel {
     var mensajeError: String?
     var estaCargando: Bool = false
     var mostrandoAgenda: Bool = false
+    var errorDictado: SpeechRecognitionError?
+    private let speech = SpeechRecognitionService()
+
+    var estaDictando: Bool { speech.estaGrabando }
 
     private let service: EventExtractionService
     private let builder: AgendaBuilder
@@ -51,29 +55,35 @@ final class EventExtractionViewModel {
         estaCargando = false
     }
     
-    /// TEMPORAL: prueba la agenda con eventos fijos, sin llamar al LLM de extracción.
-    /// Borrar cuando haya API key configurada.
-    func generarAgendaDePrueba() async {
-        estaCargando = true
-        mensajeError = nil
-        pictogramas = []
-
-        let eventosFijos = [
-            Evento(orden: 0, descripcion: "Frukost", horaAproximada: nil),
-            Evento(orden: 1, descripcion: "Skola", horaAproximada: nil),
-            Evento(orden: 2, descripcion: "Läkare", horaAproximada: nil),
-            Evento(orden: 3, descripcion: "Hem", horaAproximada: nil)
-        ]
+    /// Inicia el dictado tras comprobar permisos y disponibilidad (RF-30, RF-31).
+    func alternarDictado() async {
+        if speech.estaGrabando {
+            speech.detener()
+            return
+        }
 
         do {
-            eventos = eventosFijos
-            pictogramas = try await builder.construir(desde: eventosFijos)
-        } catch let error as PictogramaError {
-            mensajeError = error.errorDescription
+            try await speech.prepararse()
+            try speech.iniciar()
+            observarTranscripcion()
+        } catch let error as SpeechRecognitionError {
+            errorDictado = error
         } catch {
-            mensajeError = "Ha ocurrido un error inesperado."
+            errorDictado = .falloDeReconocimiento
         }
-        mostrandoAgenda = !pictogramas.isEmpty
-        estaCargando = false
     }
+
+    /// Vuelca la transcripción en el campo de texto mientras se dicta (RF-26, RF-27).
+    private func observarTranscripcion() {
+        Task { @MainActor in
+            while speech.estaGrabando {
+                textoEntrada = speech.transcripcion   // RF-27: sustituye lo que hubiera
+                try? await Task.sleep(for: .milliseconds(150))
+            }
+            textoEntrada = speech.transcripcion
+        }
+    }
+    /// TEMPORAL: prueba la agenda con eventos fijos, sin llamar al LLM de extracción.
+    /// Borrar cuando haya API key configurada.
+    
 }
