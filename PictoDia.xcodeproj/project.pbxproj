@@ -12,22 +12,31 @@
 		F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE730487E7A00716662 /* EventExtractionError.swift */; };
 		F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE830487F0E00716662 /* AnthropicModels.swift */; };
 		F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE930487FB100716662 /* APIConfig.swift */; };
-		F280AC0030495AFA00716662 /* Evento.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE530487DEF00716662 /* Evento.swift */; };
-		F280AC0130495B0100716662 /* Pictograma.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE630487E1D00716662 /* Pictograma.swift */; };
-		F280AC043049687E00716662 /* EventoInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC03304967A900716662 /* EventoInputView.swift */; };
-		F280AC053049688B00716662 /* EventExtractionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC023049677500716662 /* EventExtractionViewModel.swift */; };
-		F280AC0730496BEF00716662 /* PictogramaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0630496BEC00716662 /* PictogramaError.swift */; };
+		F280AC0030495AFA00716662 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE530487DEF00716662 /* Event.swift */; };
+		F280AC0130495B0100716662 /* Pictogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280ABE630487E1D00716662 /* Pictogram.swift */; };
+		F280AC043049687E00716662 /* ScheduleInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC03304967A900716662 /* ScheduleInputView.swift */; };
+		F280AC053049688B00716662 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC023049677500716662 /* ScheduleViewModel.swift */; };
+		F280AC0730496BEF00716662 /* PictogramError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0630496BEC00716662 /* PictogramError.swift */; };
 		F280AC0930496CA700716662 /* ArasaacModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0830496CA200716662 /* ArasaacModels.swift */; };
 		F280AC0B30496CFD00716662 /* ArasaacService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0A30496CFA00716662 /* ArasaacService.swift */; };
-		F280AC1030496E2900716662 /* PictogramaSelectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */; };
-		F280AC1230496E9200716662 /* AgendaBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1130496E9000716662 /* AgendaBuilder.swift */; };
-		F280AC193049703400716662 /* PictogramaFilaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC183049703100716662 /* PictogramaFilaView.swift */; };
-		F280AC1B3049704F00716662 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1A3049704C00716662 /* AgendaView.swift */; };
-		F280AC1D304B52C700716662 /* PictogramaCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1C304B52C300716662 /* PictogramaCache.swift */; };
+		F280AC1030496E2900716662 /* PictogramSelectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC0F30496E2600716662 /* PictogramSelectionService.swift */; };
+		F280AC1230496E9200716662 /* ScheduleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1130496E9000716662 /* ScheduleBuilder.swift */; };
+		F280AC193049703400716662 /* PictogramRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC183049703100716662 /* PictogramRowView.swift */; };
+		F280AC1B3049704F00716662 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1A3049704C00716662 /* ScheduleView.swift */; };
+		F280AC1D304B52C700716662 /* PictogramCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC1C304B52C300716662 /* PictogramCache.swift */; };
 		F280AC26304CA9BE00716662 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = F280AC25304CA9BE00716662 /* Secrets.xcconfig */; };
 		F280AC2A304D802D00716662 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC29304D802B00716662 /* WelcomeView.swift */; };
 		F280AC2C304EF2C000716662 /* SpeechRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC2B304EF2BE00716662 /* SpeechRecognitionError.swift */; };
 		F280AC2E304EF30A00716662 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280AC2D304EF30600716662 /* SpeechRecognitionService.swift */; };
+		F2EE402F30504164001EFED0 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE402E30504161001EFED0 /* MenuView.swift */; };
+		F2EE4031305041BB001EFED0 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4030305041B7001EFED0 /* ProfileStore.swift */; };
+		F2EE4033305041D2001EFED0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE4032305041D0001EFED0 /* ProfileView.swift */; };
+		F2EE40353050445B001EFED0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE403430504459001EFED0 /* AboutView.swift */; };
+		F2EE403730504B23001EFED0 /* SavedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE403630504B20001EFED0 /* SavedSchedule.swift */; };
+		F2EE403930504B62001EFED0 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE403830504B60001EFED0 /* ScheduleStore.swift */; };
+		F2EE403E30504BEF001EFED0 /* SavedSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE403D30504BEE001EFED0 /* SavedSchedulesViewModel.swift */; };
+		F2EE404030504C46001EFED0 /* SavedSchedulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE403F30504C44001EFED0 /* SavedSchedulesView.swift */; };
+		F2EE40423050627D001EFED0 /* AppBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EE40413050627B001EFED0 /* AppBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,28 +51,37 @@
 
 /* Begin PBXFileReference section */
 		F220168B304727BF007F95B7 /* PictoDia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictoDia.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F280ABE530487DEF00716662 /* Evento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evento.swift; sourceTree = "<group>"; };
-		F280ABE630487E1D00716662 /* Pictograma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictograma.swift; sourceTree = "<group>"; };
+		F280ABE530487DEF00716662 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F280ABE630487E1D00716662 /* Pictogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictogram.swift; sourceTree = "<group>"; };
 		F280ABE730487E7A00716662 /* EventExtractionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionError.swift; sourceTree = "<group>"; };
 		F280ABE830487F0E00716662 /* AnthropicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicModels.swift; sourceTree = "<group>"; };
 		F280ABE930487FB100716662 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		F280ABEA30487FB800716662 /* EventExtractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionService.swift; sourceTree = "<group>"; };
 		F280ABF1304957CD00716662 /* PictoDiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictoDiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F280ABFA3049585F00716662 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		F280AC023049677500716662 /* EventExtractionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtractionViewModel.swift; sourceTree = "<group>"; };
-		F280AC03304967A900716662 /* EventoInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventoInputView.swift; sourceTree = "<group>"; };
-		F280AC0630496BEC00716662 /* PictogramaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaError.swift; sourceTree = "<group>"; };
+		F280AC023049677500716662 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		F280AC03304967A900716662 /* ScheduleInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInputView.swift; sourceTree = "<group>"; };
+		F280AC0630496BEC00716662 /* PictogramError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramError.swift; sourceTree = "<group>"; };
 		F280AC0830496CA200716662 /* ArasaacModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArasaacModels.swift; sourceTree = "<group>"; };
 		F280AC0A30496CFA00716662 /* ArasaacService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArasaacService.swift; sourceTree = "<group>"; };
-		F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaSelectionService.swift; sourceTree = "<group>"; };
-		F280AC1130496E9000716662 /* AgendaBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaBuilder.swift; sourceTree = "<group>"; };
-		F280AC183049703100716662 /* PictogramaFilaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaFilaView.swift; sourceTree = "<group>"; };
-		F280AC1A3049704C00716662 /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
-		F280AC1C304B52C300716662 /* PictogramaCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramaCache.swift; sourceTree = "<group>"; };
+		F280AC0F30496E2600716662 /* PictogramSelectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramSelectionService.swift; sourceTree = "<group>"; };
+		F280AC1130496E9000716662 /* ScheduleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBuilder.swift; sourceTree = "<group>"; };
+		F280AC183049703100716662 /* PictogramRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramRowView.swift; sourceTree = "<group>"; };
+		F280AC1A3049704C00716662 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		F280AC1C304B52C300716662 /* PictogramCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramCache.swift; sourceTree = "<group>"; };
 		F280AC25304CA9BE00716662 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		F280AC29304D802B00716662 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		F280AC2B304EF2BE00716662 /* SpeechRecognitionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionError.swift; sourceTree = "<group>"; };
 		F280AC2D304EF30600716662 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
+		F2EE402E30504161001EFED0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F2EE4030305041B7001EFED0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		F2EE4032305041D0001EFED0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F2EE403430504459001EFED0 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		F2EE403630504B20001EFED0 /* SavedSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSchedule.swift; sourceTree = "<group>"; };
+		F2EE403830504B60001EFED0 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
+		F2EE403D30504BEE001EFED0 /* SavedSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSchedulesViewModel.swift; sourceTree = "<group>"; };
+		F2EE403F30504C44001EFED0 /* SavedSchedulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSchedulesView.swift; sourceTree = "<group>"; };
+		F2EE40413050627B001EFED0 /* AppBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -136,8 +154,9 @@
 		F280ABE130487D6900716662 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F280ABE630487E1D00716662 /* Pictograma.swift */,
-				F280ABE530487DEF00716662 /* Evento.swift */,
+				F2EE403630504B20001EFED0 /* SavedSchedule.swift */,
+				F280ABE630487E1D00716662 /* Pictogram.swift */,
+				F280ABE530487DEF00716662 /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,14 +164,16 @@
 		F280ABE230487D7800716662 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F2EE403830504B60001EFED0 /* ScheduleStore.swift */,
+				F2EE4030305041B7001EFED0 /* ProfileStore.swift */,
 				F280AC2D304EF30600716662 /* SpeechRecognitionService.swift */,
 				F280AC2B304EF2BE00716662 /* SpeechRecognitionError.swift */,
-				F280AC1C304B52C300716662 /* PictogramaCache.swift */,
-				F280AC1130496E9000716662 /* AgendaBuilder.swift */,
-				F280AC0F30496E2600716662 /* PictogramaSelectionService.swift */,
+				F280AC1C304B52C300716662 /* PictogramCache.swift */,
+				F280AC1130496E9000716662 /* ScheduleBuilder.swift */,
+				F280AC0F30496E2600716662 /* PictogramSelectionService.swift */,
 				F280AC0A30496CFA00716662 /* ArasaacService.swift */,
 				F280AC0830496CA200716662 /* ArasaacModels.swift */,
-				F280AC0630496BEC00716662 /* PictogramaError.swift */,
+				F280AC0630496BEC00716662 /* PictogramError.swift */,
 				F280ABFA3049585F00716662 /* NetworkClient.swift */,
 				F280ABEA30487FB800716662 /* EventExtractionService.swift */,
 				F280ABE930487FB100716662 /* APIConfig.swift */,
@@ -165,7 +186,8 @@
 		F280ABE330487D8700716662 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F280AC023049677500716662 /* EventExtractionViewModel.swift */,
+				F2EE403D30504BEE001EFED0 /* SavedSchedulesViewModel.swift */,
+				F280AC023049677500716662 /* ScheduleViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -173,10 +195,15 @@
 		F280ABE430487DC800716662 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F2EE40413050627B001EFED0 /* AppBackground.swift */,
+				F2EE403F30504C44001EFED0 /* SavedSchedulesView.swift */,
+				F2EE403430504459001EFED0 /* AboutView.swift */,
+				F2EE4032305041D0001EFED0 /* ProfileView.swift */,
+				F2EE402E30504161001EFED0 /* MenuView.swift */,
 				F280AC29304D802B00716662 /* WelcomeView.swift */,
-				F280AC1A3049704C00716662 /* AgendaView.swift */,
-				F280AC183049703100716662 /* PictogramaFilaView.swift */,
-				F280AC03304967A900716662 /* EventoInputView.swift */,
+				F280AC1A3049704C00716662 /* ScheduleView.swift */,
+				F280AC183049703100716662 /* PictogramRowView.swift */,
+				F280AC03304967A900716662 /* ScheduleInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,24 +318,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F280AC0130495B0100716662 /* Pictograma.swift in Sources */,
-				F280AC0730496BEF00716662 /* PictogramaError.swift in Sources */,
-				F280AC1B3049704F00716662 /* AgendaView.swift in Sources */,
-				F280AC0030495AFA00716662 /* Evento.swift in Sources */,
-				F280AC193049703400716662 /* PictogramaFilaView.swift in Sources */,
-				F280AC053049688B00716662 /* EventExtractionViewModel.swift in Sources */,
+				F2EE402F30504164001EFED0 /* MenuView.swift in Sources */,
+				F280AC0130495B0100716662 /* Pictogram.swift in Sources */,
+				F2EE4033305041D2001EFED0 /* ProfileView.swift in Sources */,
+				F2EE403E30504BEF001EFED0 /* SavedSchedulesViewModel.swift in Sources */,
+				F280AC0730496BEF00716662 /* PictogramError.swift in Sources */,
+				F280AC1B3049704F00716662 /* ScheduleView.swift in Sources */,
+				F2EE40353050445B001EFED0 /* AboutView.swift in Sources */,
+				F2EE403730504B23001EFED0 /* SavedSchedule.swift in Sources */,
+				F280AC0030495AFA00716662 /* Event.swift in Sources */,
+				F280AC193049703400716662 /* PictogramRowView.swift in Sources */,
+				F280AC053049688B00716662 /* ScheduleViewModel.swift in Sources */,
 				F280AC2C304EF2C000716662 /* SpeechRecognitionError.swift in Sources */,
 				F280AC0B30496CFD00716662 /* ArasaacService.swift in Sources */,
-				F280AC1230496E9200716662 /* AgendaBuilder.swift in Sources */,
+				F280AC1230496E9200716662 /* ScheduleBuilder.swift in Sources */,
 				F280ABFE30495AE600716662 /* AnthropicModels.swift in Sources */,
+				F2EE4031305041BB001EFED0 /* ProfileStore.swift in Sources */,
 				F280AC0930496CA700716662 /* ArasaacModels.swift in Sources */,
-				F280AC1D304B52C700716662 /* PictogramaCache.swift in Sources */,
+				F2EE40423050627D001EFED0 /* AppBackground.swift in Sources */,
+				F280AC1D304B52C700716662 /* PictogramCache.swift in Sources */,
 				F280ABFD30495AAE00716662 /* EventExtractionError.swift in Sources */,
 				F280ABFB30495A8000716662 /* NetworkClient.swift in Sources */,
 				F280AC2A304D802D00716662 /* WelcomeView.swift in Sources */,
-				F280AC1030496E2900716662 /* PictogramaSelectionService.swift in Sources */,
+				F280AC1030496E2900716662 /* PictogramSelectionService.swift in Sources */,
+				F2EE403930504B62001EFED0 /* ScheduleStore.swift in Sources */,
+				F2EE404030504C46001EFED0 /* SavedSchedulesView.swift in Sources */,
 				F280ABFC30495AA300716662 /* EventExtractionService.swift in Sources */,
-				F280AC043049687E00716662 /* EventoInputView.swift in Sources */,
+				F280AC043049687E00716662 /* ScheduleInputView.swift in Sources */,
 				F280ABFF30495AEF00716662 /* APIConfig.swift in Sources */,
 				F280AC2E304EF30A00716662 /* SpeechRecognitionService.swift in Sources */,
 			);

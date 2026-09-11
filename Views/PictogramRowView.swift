@@ -1,28 +1,28 @@
 import SwiftUI
 
-/// Una fila de la agenda: número de paso, pictograma y texto del evento (RF-16).
-struct PictogramaFilaView: View {
-    let pictograma: Pictograma
-    let numero: Int
+/// One row of the schedule: pictogram on top, event text below (RF-16).
+struct PictogramRowView: View {
+    let pictogram: Pictogram
+    let number: Int
 
     var body: some View {
         VStack(spacing: 12) {
             HStack {
-                Text("\(numero)")
+                Text("\(number)")
                     .font(.subheadline)
                     .foregroundStyle(.tertiary)
                 Spacer()
             }
 
-            if let url = pictograma.urlImagen {
-                AsyncImage(url: url) { imagen in
-                    imagen.resizable().scaledToFit()
+            if let url = pictogram.imageURL {
+                AsyncImage(url: url) { image in
+                    image.resizable().scaledToFit()
                 } placeholder: {
                     ProgressView()
                 }
                 .frame(width: 160, height: 160)
             } else {
-                // RF-13: ícono genérico cuando no hay pictograma disponible
+                // RF-13: generic icon when no pictogram is available
                 Image(systemName: "questionmark.square.dashed")
                     .resizable()
                     .scaledToFit()
@@ -30,7 +30,7 @@ struct PictogramaFilaView: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text(pictograma.textoAsociado)
+            Text(pictogram.label)
                 .font(.title2)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)

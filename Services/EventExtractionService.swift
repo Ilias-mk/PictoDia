@@ -1,72 +1,72 @@
-// EventExtractionService.swift
 import Foundation
 
-/// Extrae una lista ordenada de eventos a partir de una frase en sueco usando un LLM.
-/// Cubre RF-01, RF-03, RF-04, RF-05, RF-06, RF-07, RF-08 de spec.md.
+/// Extracts an ordered list of events from a Swedish sentence using an LLM.
+/// Covers RF-01, RF-03, RF-04, RF-05, RF-06, RF-07, RF-08.
 nonisolated struct EventExtractionService {
 
-    private let apiKey = APIConfig.anthropicKey
+    private let client: NetworkClient
     private let endpoint = URL(string: "https://api.anthropic.com/v1/messages")!
-    private let maxEventos = 7 // RF-07
-    private let cliente: NetworkClient
+    private let maxEvents = 7   // RF-07
 
-    init(cliente: NetworkClient = URLSessionClient()) {
-        self.cliente = cliente
+    init(client: NetworkClient = URLSessionClient()) {
+        self.client = client
     }
-    
-    func extraerEventos(desde frase: String) async throws -> [Evento] {
-        let requestBody = AnthropicRequest(
+
+    func extractEvents(from sentence: String) async throws -> [Event] {
+        let body = AnthropicRequest(
             model: "claude-sonnet-5",
             maxTokens: 1024,
-            messages: [AnthropicMessage(role: "user", content: construirPrompt(frase: frase))]
+            messages: [AnthropicMessage(role: "user", content: buildPrompt(sentence: sentence))]
         )
 
         var request = URLRequest(url: endpoint)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(APIConfig.anthropicKey, forHTTPHeaderField: "x-api-key")
         request.setValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
-        request.httpBody = try JSONEncoder().encode(requestBody)
+        request.httpBody = try JSONEncoder().encode(body)
 
         let data: Data
         do {
-            data = try await cliente.enviar(request)
+            data = try await client.send(request)
         } catch {
-            throw EventExtractionError.sinConexion // RF-06
+            throw EventExtractionError.noConnection   // RF-06
         }
-        let respuesta = try JSONDecoder().decode(AnthropicResponse.self, from: data)
 
-        guard let textoJSON = respuesta.content.first(where: { $0.type == "text" })?.text,
-              let jsonData = textoJSON.data(using: .utf8),
-              let dto = try? JSONDecoder().decode(EventosExtraidosDTO.self, from: jsonData),
-              !dto.eventos.isEmpty
+        let response = try JSONDecoder().decode(AnthropicResponse.self, from: data)
+
+        guard let jsonText = response.content.first(where: { $0.type == "text" })?.text,
+              let jsonData = jsonText.data(using: .utf8),
+              let dto = try? JSONDecoder().decode(ExtractedEventsDTO.self, from: jsonData),
+              !dto.events.isEmpty
         else {
-            throw EventExtractionError.sinEventosDetectados // RF-05
+            throw EventExtractionError.noEventsDetected   // RF-05
         }
 
-        let ordenados = dto.eventos
-            .sorted { $0.ordenSugerido < $1.ordenSugerido } // RF-04
-            .prefix(maxEventos) // RF-07 / RF-08
+        let ordered = dto.events
+            .sorted { $0.suggestedOrder < $1.suggestedOrder }   // RF-04
+            .prefix(maxEvents)                                  // RF-07 / RF-08
 
-        return ordenados.enumerated().map { index, dto in
-            Evento(orden: index, descripcion: dto.descripcion, horaAproximada: nil)
+        return ordered.enumerated().map { index, dto in
+            Event(order: index, text: dto.text, approximateTime: nil)
         }
     }
 
-    private func construirPrompt(frase: String) -> String {
-                """
-                Analiza la siguiente frase en sueco de un cuidador describiendo el plan del \
-                día de una persona con autismo. Extrae los eventos discretos y ordénalos de \
-                forma lógica/cronológica aunque no se mencionen en ese orden.
+    private func buildPrompt(sentence: String) -> String {
+        """
+        Analyze the following Swedish sentence, in which a caregiver describes \
+        the day's plan for a person with autism. Extract the discrete events and \
+        order them logically and chronologically, even if they are not mentioned \
+        in that order.
 
-                Cada descripción debe ser una o dos palabras como máximo: el término más \
-                simple posible, sin complementos de tiempo ni de lugar. Por ejemplo, de \
-                "gå till läkaren på eftermiddagen" la descripción correcta es "läkare", \
-                no la frase completa.
+        Each description must be one or two words at most: the simplest possible \
+        term, with no time or place modifiers. For example, from "gå till läkaren \
+        på eftermiddagen" the correct description is "läkare", not the full phrase.
 
-                Responde SOLO con JSON válido en este formato exacto, sin texto adicional:
-                {"eventos": [{"descripcion": "...", "ordenSugerido": 0}]}
+        Reply ONLY with valid JSON in exactly this format, with no extra text:
+        {"events": [{"text": "...", "suggestedOrder": 0}]}
 
-                Frase: "\(frase)"
-                """    }
+        Sentence: "\(sentence)"
+        """
+    }
 }

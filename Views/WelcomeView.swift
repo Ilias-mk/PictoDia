@@ -3,34 +3,20 @@ import SwiftUI
 /// Pantalla de bienvenida para el cuidador. Estilo cálido: no la ve la persona con autismo.
 struct WelcomeView: View {
 
-    @AppStorage("haVistoBienvenida") private var haVistoBienvenida = false
-    @State private var mostrandoApp = false
+    @AppStorage("haVistoBienvenida") private var hasSeenWelcome = false
+    @State private var showingApp = false
 
     var body: some View {
-        if haVistoBienvenida {
-            EventoInputView()
+        if hasSeenWelcome {
+            MenuView()
         } else {
-            contenidoBienvenida
+            welcomeContent
         }
     }
 
-    private var contenidoBienvenida: some View {
+    private var welcomeContent: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color(red: 0.98, green: 0.85, blue: 0.72),
-                    Color(red: 0.96, green: 0.72, blue: 0.55),
-                    Color(red: 0.95, green: 0.75, blue: 0.78)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-
-            Circle()
-                .fill(.white)
-                .scaleEffect(1.6)
-                .ignoresSafeArea()
+            AppBackground()
 
             VStack(spacing: 32) {
                 HStack(spacing: 8) {
@@ -47,8 +33,8 @@ struct WelcomeView: View {
                     .lineSpacing(4)
 
                 Button {
-                    haVistoBienvenida = true
-                    mostrandoApp = true
+                    hasSeenWelcome = true
+                    showingApp = true
                 } label: {
                     HStack(spacing: 10) {
                         Image(systemName: "arrow.right")
@@ -69,9 +55,10 @@ struct WelcomeView: View {
                 .padding(.top, 16)
             }
             .padding()
+            .foregroundStyle(.black)
         }
-        .fullScreenCover(isPresented: $mostrandoApp) {
-            EventoInputView()
+        .fullScreenCover(isPresented: $showingApp) {
+            MenuView()
         }
     }
 }

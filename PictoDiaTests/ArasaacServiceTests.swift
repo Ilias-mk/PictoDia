@@ -1,76 +1,70 @@
 import XCTest
 @testable import PictoDia
 
-/// Cliente falso que responde distinto según el idioma que pida la URL.
-struct ClienteFalsoPorIdioma: NetworkClient {
-    var respuestaSueco: Data
-    var respuestaIngles: Data
+/// Fake client answering differently depending on the language in the URL.
+struct FakeClientByLanguage: NetworkClient {
+    var swedishResponse: Data
+    var englishResponse: Data
 
-    func enviar(_ request: URLRequest) async throws -> Data {
+    func send(_ request: URLRequest) async throws -> Data {
         let url = request.url?.absoluteString ?? ""
-        return url.contains("/sv/") ? respuestaSueco : respuestaIngles
+        return url.contains("/sv/") ? swedishResponse : englishResponse
     }
 }
 
 final class ArasaacServiceTests: XCTestCase {
 
-    private let listaVacia = "[]".data(using: .utf8)!
+    private let emptyList = "[]".data(using: .utf8)!
 
-    private func lista(conID id: Int, keyword: String) -> Data {
+    private func list(withID id: Int, keyword: String) -> Data {
         """
         [{"_id": \(id), "keywords": [{"keyword": "\(keyword)"}], "schematic": false, "aac": true}]
         """.data(using: .utf8)!
     }
 
-    func testDevuelveResultadosEnSueco() async throws {
-        let cliente = ClienteFalsoPorIdioma(
-            respuestaSueco: lista(conID: 4626, keyword: "frukost"),
-            respuestaIngles: listaVacia
+    func testReturnsSwedishResults() async throws {
+        let client = FakeClientByLanguage(
+            swedishResponse: list(withID: 4626, keyword: "frukost"),
+            englishResponse: emptyList
         )
-        let service = ArasaacService(cliente: cliente)
+        let service = ArasaacService(client: client)
 
-        let resultado = try await service.buscarCandidatos(para: "frukost")
+        let result = try await service.findCandidates(for: "frukost")
 
-        XCTAssertEqual(resultado.count, 1)          // RF-10
-        XCTAssertEqual(resultado.first?.id, 4626)
+        XCTAssertEqual(result.count, 1)          // RF-10
+        XCTAssertEqual(result.first?.id, 4626)
     }
 
-    func testHaceFallbackAInglesCuandoSuecoVieneVacio() async throws {
-        let cliente = ClienteFalsoPorIdioma(
-            respuestaSueco: listaVacia,
-            respuestaIngles: lista(conID: 999, keyword: "breakfast")
+    func testFallsBackToEnglishWhenSwedishIsEmpty() async throws {
+        let client = FakeClientByLanguage(
+            swedishResponse: emptyList,
+            englishResponse: list(withID: 999, keyword: "breakfast")
         )
-        let service = ArasaacService(cliente: cliente)
+        let service = ArasaacService(client: client)
 
-        let resultado = try await service.buscarCandidatos(para: "frukost")
+        let result = try await service.findCandidates(for: "frukost")
 
-        XCTAssertEqual(resultado.first?.id, 999)    // RF-11
+        XCTAssertEqual(result.first?.id, 999)    // RF-11
     }
 
-    func testDevuelveVacioCuandoNoHayEnNingunIdioma() async throws {
-        let cliente = ClienteFalsoPorIdioma(respuestaSueco: listaVacia, respuestaIngles: listaVacia)
-        let service = ArasaacService(cliente: cliente)
+    func testReturnsEmptyWhenNeitherLanguageHasResults() async throws {
+        let client = FakeClientByLanguage(swedishResponse: emptyList, englishResponse: emptyList)
+        let service = ArasaacService(client: client)
 
-        let resultado = try await service.buscarCandidatos(para: "xyzabc")
+        let result = try await service.findCandidates(for: "xyzabc")
 
-        XCTAssertTrue(resultado.isEmpty)            // habilita RF-13
+        XCTAssertTrue(result.isEmpty)            // enables RF-13
     }
 
-    func testLanzaFalloDeRedCuandoFallaLaPeticion() async {
-        let cliente = ClienteFalso(errorALanzar: URLError(.timedOut))
-        let service = ArasaacService(cliente: cliente)
+    func testThrowsNetworkFailure() async {
+        let client = FakeClient(errorToThrow: URLError(.timedOut))
+        let service = ArasaacService(client: client)
 
         do {
-            _ = try await service.buscarCandidatos(para: "frukost")
-            XCTFail("Debería haber lanzado falloDeRed")
+            _ = try await service.findCandidates(for: "frukost")
+            XCTFail("Expected networkFailure")
         } catch {
-            XCTAssertEqual(error as? PictogramaError, .falloDeRed)   // RF-14
+            XCTAssertEqual(error as? PictogramError, .networkFailure)   // RF-14
         }
     }
-}//
-//  ArasaacServiceTests.swift
-//  PictoDia
-//
-//  Created by Ilias Mohamed on 2026-09-03.
-//
-
+}

@@ -1,24 +1,24 @@
 import Foundation
 
-/// Errores del dictado por voz (RF-30, RF-31).
+/// Errors from voice dictation (RF-30, RF-31).
 nonisolated enum SpeechRecognitionError: LocalizedError, Equatable {
-    case permisoDenegado
-    case suecoNoDisponible
-    case falloDeReconocimiento
+    case permissionDenied
+    case swedishUnavailable
+    case recognitionFailed
 
     var errorDescription: String? {
         switch self {
-        case .permisoDenegado:
-            return "PictoDia necesita acceso al micrófono y al reconocimiento de voz. Puedes activarlos en Ajustes."
-        case .suecoNoDisponible:
-            return "El reconocimiento de voz en sueco no está disponible en este dispositivo."
-        case .falloDeReconocimiento:
-            return "No se pudo procesar el audio. Inténtalo de nuevo."
+        case .permissionDenied:
+            return "PictoDia behöver tillgång till mikrofonen och taligenkänning. Du kan aktivera det i Inställningar."
+        case .swedishUnavailable:
+            return "Taligenkänning på svenska är inte tillgänglig på den här enheten."
+        case .recognitionFailed:
+            return "Det gick inte att tolka ljudet. Försök igen."
         }
     }
 
-    /// Solo el permiso denegado justifica ofrecer un enlace a Ajustes (RF-30).
-    var ofreceAjustes: Bool {
-        self == .permisoDenegado
+    /// Only a denied permission is worth offering a Settings shortcut for (RF-30).
+    var offersSettings: Bool {
+        self == .permissionDenied
     }
 }

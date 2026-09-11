@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - Lo que enviamos a la API de Anthropic
+// MARK: - Request
 
 nonisolated struct AnthropicRequest: Codable {
     let model: String
@@ -19,7 +19,7 @@ nonisolated struct AnthropicMessage: Codable {
     let content: String
 }
 
-// MARK: - Lo que la API nos devuelve
+// MARK: - Response
 
 nonisolated struct AnthropicResponse: Codable {
     let content: [AnthropicContentBlock]
@@ -30,19 +30,13 @@ nonisolated struct AnthropicContentBlock: Codable {
     let text: String?
 }
 
-// MARK: - El formato que le pedimos al LLM que use dentro de su respuesta de texto
+// MARK: - The shape we ask the model to return inside its text response
 
-nonisolated struct EventoExtraidoDTO: Codable {
-    let descripcion: String
-    let ordenSugerido: Int
+nonisolated struct ExtractedEventDTO: Codable {
+    let text: String
+    let suggestedOrder: Int
 }
 
-nonisolated struct EventosExtraidosDTO: Codable {
-    let eventos: [EventoExtraidoDTO]
-}//
-//  AnthropicModels.swift
-//  PictoDia
-//
-//  Created by Ilias Mohamed on 2026-09-02.
-//
-
+nonisolated struct ExtractedEventsDTO: Codable {
+    let events: [ExtractedEventDTO]
+}

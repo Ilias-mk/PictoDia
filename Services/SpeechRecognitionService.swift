@@ -2,108 +2,103 @@ import Foundation
 import Speech
 import AVFoundation
 
-/// Transcribe voz en sueco a texto, en vivo, usando el framework Speech de iOS.
+/// Transcribes Swedish speech to text, live, using the Speech framework.
 @MainActor
 @Observable
 final class SpeechRecognitionService {
-    
-    /// Texto transcrito hasta el momento. La vista lo observa (RF-26).
-    private(set) var transcripcion: String = ""
-    private(set) var estaGrabando: Bool = false
-    
-    private let reconocedor = SFSpeechRecognizer(locale: Locale(identifier: "se-SV"))
-    private let motorAudio = AVAudioEngine()
-    private var peticion: SFSpeechAudioBufferRecognitionRequest?
-    private var tarea: SFSpeechRecognitionTask?
-    private var temporizadorSilencio: Timer?
-    
-    private let segundosDeSilencio: TimeInterval = 2.0
-    
-    /// Comprueba disponibilidad de sueco y solicita permisos. Lanza si algo falta.
-    func prepararse() async throws {
-        guard let reconocedor, reconocedor.isAvailable else {
-            throw SpeechRecognitionError.suecoNoDisponible   // RF-31
+
+    /// Text transcribed so far. Observed by the view (RF-26).
+    private(set) var transcript: String = ""
+    private(set) var isRecording: Bool = false
+
+    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "sv-SE"))
+    private let audioEngine = AVAudioEngine()
+    private var request: SFSpeechAudioBufferRecognitionRequest?
+    private var task: SFSpeechRecognitionTask?
+    private var silenceTimer: Timer?
+
+    private let silenceSeconds: TimeInterval = 2.0
+
+    /// Checks Swedish availability and requests permissions. Throws when something is missing.
+    func prepare() async throws {
+        guard let recognizer, recognizer.isAvailable else {
+            throw SpeechRecognitionError.swedishUnavailable   // RF-31
         }
-        
-        let autorizado = await withCheckedContinuation { continuation in
-            SFSpeechRecognizer.requestAuthorization { estado in
-                continuation.resume(returning: estado == .authorized)
+
+        let speechAuthorized = await withCheckedContinuation { continuation in
+            SFSpeechRecognizer.requestAuthorization { status in
+                continuation.resume(returning: status == .authorized)
             }
         }
-        guard autorizado else { throw SpeechRecognitionError.permisoDenegado }
-        
-        let micAutorizado = await AVAudioApplication.requestRecordPermission()
-        guard micAutorizado else { throw SpeechRecognitionError.permisoDenegado }   // RF-30
+        guard speechAuthorized else { throw SpeechRecognitionError.permissionDenied }
+
+        let micAuthorized = await AVAudioApplication.requestRecordPermission()
+        guard micAuthorized else { throw SpeechRecognitionError.permissionDenied }   // RF-30
     }
-    
-    /// Inicia el dictado. La transcripción se va publicando en `transcripcion`.
-    func iniciar() throws {
-        detener()
-        transcripcion = ""
-        
-        let sesion = AVAudioSession.sharedInstance()
-        try sesion.setCategory(.record, mode: .measurement, options: .duckOthers)
-        try sesion.setActive(true, options: .notifyOthersOnDeactivation)
-        
-        let nuevaPeticion = SFSpeechAudioBufferRecognitionRequest()
-        nuevaPeticion.shouldReportPartialResults = true   // RF-26
-        peticion = nuevaPeticion
-        
-        let nodo = motorAudio.inputNode
-        let formato = nodo.outputFormat(forBus: 0)
-        nodo.installTap(onBus: 0, bufferSize: 1024, format: formato) { buffer, _ in
-            nuevaPeticion.append(buffer)
+
+    /// Starts dictation. The transcript is published as it comes in.
+    func start() throws {
+        stop()
+        transcript = ""
+
+        let session = AVAudioSession.sharedInstance()
+        try session.setCategory(.record, mode: .measurement, options: .duckOthers)
+        try session.setActive(true, options: .notifyOthersOnDeactivation)
+
+        let newRequest = SFSpeechAudioBufferRecognitionRequest()
+        newRequest.shouldReportPartialResults = true   // RF-26
+        request = newRequest
+
+        let node = audioEngine.inputNode
+        let format = node.outputFormat(forBus: 0)
+        node.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
+            newRequest.append(buffer)
         }
-        
-        motorAudio.prepare()
-        try motorAudio.start()
-        estaGrabando = true
-        print("VOZ: motor iniciado")
-        reiniciarTemporizadorSilencio()
-        
-        tarea = reconocedor?.recognitionTask(with: nuevaPeticion) { [weak self] resultado, error in
-            let texto = resultado?.bestTranscription.formattedString
-            let terminado = error != nil || resultado?.isFinal == true
-            let descripcionError = error?.localizedDescription
+
+        audioEngine.prepare()
+        try audioEngine.start()
+        isRecording = true
+        restartSilenceTimer()
+
+        task = recognizer?.recognitionTask(with: newRequest) { [weak self] result, error in
+            let text = result?.bestTranscription.formattedString
+            let finished = error != nil || result?.isFinal == true
 
             Task { @MainActor [weak self] in
                 guard let self else { return }
-                print("VOZ: resultado =", texto ?? "nil", "| terminado =", terminado, "| error =", descripcionError ?? "ninguno")
-                if let texto {
-                    self.transcripcion = texto
-                    self.reiniciarTemporizadorSilencio()
+                if let text {
+                    self.transcript = text
+                    self.restartSilenceTimer()   // RF-28
                 }
-                if terminado {
-                    self.detener()
+                if finished {
+                    self.stop()
                 }
             }
         }
     }
-    
-    /// Detiene la grabación y libera los recursos de audio.
-    func detener() {
-        print("VOZ: deteniendo, grabando =", estaGrabando)
-        temporizadorSilencio?.invalidate()
-        temporizadorSilencio = nil
-        
-        if motorAudio.isRunning {
-            motorAudio.stop()
-            motorAudio.inputNode.removeTap(onBus: 0)
+
+    /// Stops recording and releases audio resources.
+    func stop() {
+        silenceTimer?.invalidate()
+        silenceTimer = nil
+
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
         }
-        peticion?.endAudio()
-        peticion = nil
-        tarea?.cancel()
-        tarea = nil
-        estaGrabando = false
+        request?.endAudio()
+        request = nil
+        task?.cancel()
+        task = nil
+        isRecording = false
     }
-    
-    /// RF-28: cada resultado parcial reinicia la cuenta atrás; el silencio la deja expirar.
-    /// RF-28: cada resultado parcial reinicia la cuenta atrás; el silencio la deja expirar.
-    private func reiniciarTemporizadorSilencio() {
-        temporizadorSilencio?.invalidate()
-        temporizadorSilencio = Timer.scheduledTimer(withTimeInterval: segundosDeSilencio, repeats: false) { _ in
+
+    /// RF-28: each partial result resets the countdown; silence lets it expire.
+    private func restartSilenceTimer() {
+        silenceTimer?.invalidate()
+        silenceTimer = Timer.scheduledTimer(withTimeInterval: silenceSeconds, repeats: false) { _ in
             Task { @MainActor [weak self] in
-                self?.detener()
+                self?.stop()
             }
         }
     }

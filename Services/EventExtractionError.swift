@@ -1,22 +1,16 @@
 import Foundation
 
-/// Errores que puede producir el proceso de extracción de eventos (RF-05, RF-06).
+/// Errors from the event extraction process (RF-05, RF-06).
 nonisolated enum EventExtractionError: LocalizedError, Equatable {
-    case sinConexion
-    case sinEventosDetectados
+    case noConnection
+    case noEventsDetected
 
     var errorDescription: String? {
         switch self {
-        case .sinConexion:
-            return "Sin conexión a internet. Inténtalo de nuevo cuando tengas señal."
-        case .sinEventosDetectados:
-            return "No pude identificar ningún evento en esa frase. ¿Puedes reformularla?"
+        case .noConnection:
+            return "Ingen internetanslutning. Försök igen när du har täckning."
+        case .noEventsDetected:
+            return "Jag kunde inte hitta några händelser i den meningen. Kan du formulera om den?"
         }
     }
-}//
-//  EventExtractionError.swift
-//  PictoDia
-//
-//  Created by Ilias Mohamed on 2026-09-02.
-//
-
+}

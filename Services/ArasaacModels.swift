@@ -1,6 +1,6 @@
 import Foundation
 
-/// Un pictograma tal como lo devuelve la API de ARASAAC.
+/// A pictogram as returned by the ARASAAC API.
 nonisolated struct ArasaacPictogramDTO: Codable {
     let id: Int
     let keywords: [ArasaacKeywordDTO]
@@ -12,18 +12,12 @@ nonisolated struct ArasaacPictogramDTO: Codable {
         case keywords, schematic, aac
     }
 
-    /// Término principal asociado a este pictograma, si existe.
-    var terminoPrincipal: String? {
+    /// Primary term associated with this pictogram, if any.
+    var primaryTerm: String? {
         keywords.first?.keyword
     }
 }
 
 nonisolated struct ArasaacKeywordDTO: Codable {
     let keyword: String
-}//
-//  ArasaacModels.swift
-//  PictoDia
-//
-//  Created by Ilias Mohamed on 2026-09-03.
-//
-
+}

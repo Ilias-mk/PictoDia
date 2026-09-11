@@ -1,11 +1,11 @@
 import Foundation
 
-/// Lee la API key desde la configuración de compilación (Secrets.xcconfig).
+/// Reads the API key from the build configuration (Secrets.xcconfig).
 nonisolated enum APIConfig {
     static var anthropicKey: String {
         guard let key = Bundle.main.object(forInfoDictionaryKey: "ANTHROPIC_API_KEY") as? String,
               !key.isEmpty else {
-            assertionFailure("Falta ANTHROPIC_API_KEY. Copia Secrets.xcconfig.example a Secrets.xcconfig y rellénala.")
+            assertionFailure("Missing ANTHROPIC_API_KEY. Copy Secrets.xcconfig.example to Secrets.xcconfig and fill it in.")
             return ""
         }
         return key
