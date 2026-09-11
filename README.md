@@ -6,6 +6,10 @@ what is going to happen.
 
 Built with SwiftUI as my first Swift project.
 
+| | | | |
+|---|---|---|---|
+| ![Welcome](Screenshots/welcome.png) | ![Menu](Screenshots/menu.png) | ![Input](Screenshots/input.png) | ![Schedule](Screenshots/schedule1.png) |
+| ![Schedule](Screenshots/schedule2.png) | ![Schedule](Screenshots/schedule3.png) | ![Save](Screenshots/save.png) | ![Saved](Screenshots/savedschedule.png) |
 ---
 
 ## The problem
